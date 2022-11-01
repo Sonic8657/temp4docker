@@ -25,8 +25,8 @@ for (dirpath, dirnames, filenames) in walk("/data1/temp4docker/voc_data50"):
         img_list.append(img_data)
         
 # fixed-point analysis
-bie_model_path = km.analysis({"input": img_list})
-print("\nFixed-point analysis done. Saved bie model to '" + str(bie_model_path) + "'")
+#bie_model_path = km.analysis({"input": img_list})
+#print("\nFixed-point analysis done. Saved bie model to '" + str(bie_model_path) + "'")
 
 # compile
 nef_model_path = ktc.compile([km])
