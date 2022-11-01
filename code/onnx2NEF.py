@@ -6,7 +6,7 @@ from PIL import Image
 onnx_path = '/data1/temp4docker/yolov3-tiny-OP.onnx'
 m = onnx.load(onnx_path)
 # npu (only) performance simulation
-km = ktc.ModelConfig(20008, "0001", "520", onnx_model=m)
+km = ktc.ModelConfig(35000, "001a", "520", onnx_model=m)
 eval_result = km.evaluate()
 print("\nNpu performance evaluation result:\n" + str(eval_result))
 
