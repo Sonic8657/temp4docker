@@ -17,7 +17,7 @@ km = ktc.ModelConfig(32769, "0001", "520", onnx_path="/workspace/temp4docker/res
 #eval_result = km.evaluate()
 
 input_data = [preprocess("/workspace/temp4docker/image/0_webcam_1.jpg")]
-inf_results = ktc.kneron_inference(input_data, onnx_file="/workspace/data1/resnet_50_Opt.onnx", input_names=["data_out"])
+inf_results = ktc.kneron_inference(input_data, onnx_file="/workspace/temp4docker/resnet_50_Opt.onnx", input_names=["data_out"])
 
 
 # Preprocess images and create the input mapping
