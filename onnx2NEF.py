@@ -3,14 +3,19 @@ import torch.onnx
 import ktc
 from PIL import Image
 import numpy as np
+import cv2
 
+def preprocess(img_file_path):
+    image = cv2.imread(img_file_path)
+    # resize image to match model input size (this case: width 1024  height 512)
+    image = cv2.resize(image , (256, 256,3), interpolation=cv2.INTER_LINEAR)
+    # convert to numpy array
+    np_data = np.array(image, dtype='float32')
+    # data normalization (for OpenMMLab Kneron Edition, "pixel/256 - 0.5" )
+    np_data = np_data/256.
+    np_data = np_data - 0.5
 
-def preprocess(input_file):
-    image = Image.open(input_file)
-    image = image.convert("RGB")
-    img_data = np.array(image.resize((256, 256), Image.BILINEAR)) / 255
-    #img_data = np.transpose(img_data, (1, 0, 2))
-    return img_data
+    return np_data
 
 km = ktc.ModelConfig(32769, "0001", "520", onnx_path="/workspace/temp4docker/resnet_50_Opt.onnx")
 print('build km')
